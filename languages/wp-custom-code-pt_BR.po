@@ -1,0 +1,112 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Custom Code\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-01-22 04:14+0000\n"
+"PO-Revision-Date: 2019-01-22 04:18+0000\n"
+"Last-Translator: bboyguil <klayltonfernando@gmail.com>\n"
+"Language-Team: Português do Brasil\n"
+"Language: pt_BR\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.2.0; wp-5.0.3"
+
+#. Name of the plugin
+#: metabox.php:11
+msgid "WP Custom Code"
+msgstr "Códigos Personalizados"
+
+#: metabox.php:24 metabox.php:38
+msgid "Enter your code in the field corresponding to the language."
+msgstr "Digite seu código no campo correspondente ao idioma."
+
+#: metabox.php:36
+msgid "CSS Custom"
+msgstr "CSS Personalizado"
+
+#: metabox.php:44
+msgid "JavaScript Custom"
+msgstr "JavaScript Personalizado"
+
+#: metabox.php:52
+msgid "CSS and JavaScript URL Custom"
+msgstr "URL personalizado CSS e JavaScript"
+
+#: metabox.php:54
+msgid "https://www.site.com/js/script.js"
+msgstr "https://www.site.com/js/script.js"
+
+#: page-settings.php:9
+msgid "Settings Page CSS and JS Custom"
+msgstr "Página de configurações CSS e JS Custom"
+
+#: page-settings.php:10
+msgid "CSS and JS Custom"
+msgstr "CSS e JS Personalizado"
+
+#: page-settings.php:28
+msgid "Settings Page"
+msgstr "Página de configurações"
+
+#: page-settings.php:45
+msgid "General Settings"
+msgstr "Configurações Gerais"
+
+#: page-settings.php:46
+msgid "Globals Codes"
+msgstr "Códigos Globais"
+
+#: page-settings.php:53
+msgid ""
+"In the fields below, write the code you want to print on every page of your "
+"blog."
+msgstr ""
+"Nos campos abaixo, escreva o código que você deseja imprimir em todas as "
+"páginas do seu blog."
+
+#: page-settings.php:56
+msgid ""
+"Add in this session the codes that will be uploaded throughout the site."
+msgstr "Adicione nesta sessão os códigos que serão carregados em todo o site."
+
+#: page-settings.php:70
+msgid "CSS Global"
+msgstr "CSS Global"
+
+#: page-settings.php:76
+msgid "Enter your CSS code in the field to be printed throughout the site."
+msgstr "Digite seu código CSS no campo para ser impresso em todo o site."
+
+#: page-settings.php:87
+msgid ""
+"Enter your JavaScript code in the field to be printed throughout the site."
+msgstr ""
+"Digite seu código JavaScript no campo para ser impresso em todo o site."
+
+#: page-settings.php:97
+msgid "Does this help?"
+msgstr "Isso ajuda?"
+
+#: page-settings.php:98
+msgid "Enter one address per line."
+msgstr "Digite um endereço por linha."
+
+#. Description of the plugin
+msgid ""
+"Add custom CSS and JavaScript to your pages and post in simple and handy "
+"ways."
+msgstr ""
+"Adicione CSS e JavaScript personalizado em suas páginas e post de formas "
+"simples e prática."
+
+#. URI of the plugin
+#. Author URI of the plugin
+msgid "https://www.criarsitewordpress.com"
+msgstr "https://www.criarsitewordpress.com"
+
+#. Author of the plugin
+msgid "Klaylton Fernando"
+msgstr "Klaylton Fernando"
