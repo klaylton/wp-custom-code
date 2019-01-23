@@ -13,19 +13,17 @@
  * Domain Path:       /languages
  */
 
-    define( 'DIR_PLUGIN', plugin_dir_path( __FILE__ ) );
-
-    require_once( DIR_PLUGIN . 'metabox.php' );
-    require_once( DIR_PLUGIN . 'page-settings.php' );
+    require_once( plugin_dir_path( __FILE__ ) . 'metabox.php' );
+    require_once( plugin_dir_path( __FILE__ ) . 'page-settings.php' );
 
 
-class Css_Custom {
+class KFAG_WP_Custom_Code {
 
     private static $instance;
 
     private function __construct() {
-        $metaboxes = new Meta_Box_CSS_JS_Custom();
-        $settings = new Settings_CSS_JS_Custom();
+        $metaboxes = new KFAG_Meta_Box_CSS_JS_Custom();
+        $settings = new KFAG_Settings_CSS_JS_Custom();
 
         // Registro de Metabox
 		add_action( 'add_meta_boxes', array( $metaboxes, 'add_meta_boxes' ) );
@@ -62,8 +60,8 @@ class Css_Custom {
     }
 
     public function register_styles(){
-        wp_register_style( 'css-custom', plugin_dir_url(__FILE__).'css/style.css' );
-        wp_enqueue_style( 'css-custom' );
+        wp_register_style( 'kfag_css-custom', plugin_dir_url(__FILE__).'css/style.css' );
+        wp_enqueue_style( 'kfag_css-custom' );
     }
 
     public function register_scripts() {
@@ -81,32 +79,37 @@ class Css_Custom {
     }
 
 
-    function code_custom_insert_script($script = null) {
+    public function code_custom_insert_script($script = null) {
         if ($script === null) return;
+
         $script = trim(stripslashes($script));
+
         if (!$script || $script == '') return;
+
         echo '<script type="text/javascript"';
         if (stripos($script, '://') == 4 || stripos($script, '://') == 5) {
-        echo " src=\"{$script}\">";
+            echo " src=\"{$script}\">";
         } else {
-        echo ">\r\n{$script}\r\n";
+            echo ">\r\n{$script}\r\n";
         }
         echo "</script>\r\n";
     }
 
-    function register_custom_js() {
+    public function register_custom_js() {
         global $post;
         $exts = array('js_external', 'js');
 
         foreach ($exts as $ext) {
-            if ($value = get_option('wp_custom_'.$ext, '')) {
+            $value = esc_attr( get_option('kfag_wp_custom_'.$ext, '') );
+            if ( $value ) {
                 $this->code_custom_insert_script($value);
             }
         }
 
         if (isset($post)) {
             foreach ($exts as $ext) {
-                if ($value = get_post_meta( $post->ID, 'wp_custom_'.$ext, true )) {
+                $value = esc_attr( get_post_meta( $post->ID, 'kfag_wp_custom_'.$ext, true ) );
+                if ( $value ) {
                     $this->code_custom_insert_script($value);
                 }
             }
@@ -114,15 +117,16 @@ class Css_Custom {
     }
 
     // imprimi o CSS no Front-End
-    function register_custom_css() {
+    public function register_custom_css() {
         global $post;
-
-        if ($value = get_option('wp_custom_css', '' )) {
+        $value = esc_attr( get_option('kfag_wp_custom_css', '' ) );
+        if ( $value ) {
             echo "<style>" . $value . "</style>";
         }
 
         if (isset($post)) {
-            if ($value = get_post_meta( $post->ID, 'wp_custom_css', true )) {
+            $value = esc_attr( get_post_meta( $post->ID, 'kfag_wp_custom_css', true ) );
+            if ( $value ) {
                 echo "<style>" . $value . "</style>";
             }
         }
@@ -140,4 +144,4 @@ class Css_Custom {
 
 }
 
-Css_Custom::getInstance();
+KFAG_WP_Custom_Code::getInstance();

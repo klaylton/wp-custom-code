@@ -2,7 +2,7 @@
     /*
 	* Registro das funções de menu e página de configurações;
 	*/
-class Settings_CSS_JS_Custom {
+class KFAG_Settings_CSS_JS_Custom {
 
 	public function create_plugin_settings_page() {
     	// Add the menu item and page
@@ -25,11 +25,11 @@ class Settings_CSS_JS_Custom {
 
 	public function plugin_settings_page_content() { ?>
 	    <div class="wrap">
-	        <h2><?php echo __( 'Settings Page', 'wp-custom-code' ); ?></h2>
+	        <h2><?php esc_html_e( 'Settings Page', 'wp-custom-code' ); ?></h2>
 	        <form method="post" action="options.php">
 	            <?php
-	                settings_fields( 'custom_code_fields' );
-	                do_settings_sections( 'custom_code_fields' );
+	                settings_fields( 'kfag_custom_code_fields' );
+	                do_settings_sections( 'kfag_custom_code_fields' );
 	                submit_button();
 	            ?>
 	        </form>
@@ -42,18 +42,18 @@ class Settings_CSS_JS_Custom {
 	 */
 	public function setup_sections() {
     	
-    	add_settings_section( 'css_js_custom_settings', __( 'General Settings', 'wp-custom-code' ), array( $this, 'section_callback' ), 'custom_code_fields' );
-    	add_settings_section( 'code_global', __( 'Globals Codes', 'wp-custom-code' ), array( $this, 'section_callback' ), 'custom_code_fields' );
+    	add_settings_section( 'kfag_css_js_custom_settings', __( 'General Settings', 'wp-custom-code' ), array( $this, 'section_callback' ), 'kfag_custom_code_fields' );
+    	add_settings_section( 'kfag_code_global', __( 'Globals Codes', 'wp-custom-code' ), array( $this, 'section_callback' ), 'kfag_custom_code_fields' );
     	
 	}
 
 	public function section_callback( $arguments ) {
 	    switch( $arguments['id'] ){
-	        case 'css_js_custom_settings':
-	            echo __( 'In the fields below, write the code you want to print on every page of your blog.', 'wp-custom-code' );
+	        case 'kfag_css_js_custom_settings':
+	            esc_html_e( 'In the fields below, write the code you want to print on every page of your blog.', 'wp-custom-code' );
 	            break;
-	        case 'code_global':
-	            echo __( 'Add in this session the codes that will be uploaded throughout the site.', 'wp-custom-code' );
+	        case 'kfag_code_global':
+	            esc_html_e( 'Add in this session the codes that will be uploaded throughout the site.', 'wp-custom-code' );
 				break;
 	    }
 	}
@@ -66,36 +66,36 @@ class Settings_CSS_JS_Custom {
 			 * Sessão de Códigos
 			 */
 		    array(
-				'uid' => 'wp_custom_css',
-				'label' => __( 'CSS Global', 'wp-custom-code'),
-				'section' => 'code_global',
+				'uid' => 'kfag_wp_custom_css',
+				'label' => esc_html__( 'CSS Global', 'wp-custom-code'),
+				'section' => 'kfag_code_global',
 				'type' => 'textarea',
 				'options' => false,
 				'placeholder' => '',
-				'helper' => __( '', 'wp-custom-code'),
-				'supplemental' => __( 'Enter your CSS code in the field to be printed throughout the site.', 'wp-custom-code'),
+				'helper' => esc_html__( '', 'wp-custom-code'),
+				'supplemental' => esc_html__( 'Enter your CSS code in the field to be printed throughout the site.', 'wp-custom-code'),
 				'default' => ''
 			),
 			array(
-				'uid' => 'wp_custom_js',
-				'label' => 'JS Global',
-				'section' => 'code_global',
+				'uid' => 'kfag_wp_custom_js',
+				'label' => esc_html__( 'JS Global', 'wp-custom-code'),
+				'section' => 'kfag_code_global',
 				'type' => 'textarea',
 				'options' => false,
 				'placeholder' => '',
-				'helper' => __( '', 'wp-custom-code'),
-				'supplemental' => __( 'Enter your JavaScript code in the field to be printed throughout the site.', 'wp-custom-code'),
+				'helper' => esc_html__( '', 'wp-custom-code'),
+				'supplemental' => esc_html__( 'Enter your JavaScript code in the field to be printed throughout the site.', 'wp-custom-code'),
 				'default' => ''
 			),
 			array(
-				'uid' => 'wp_custom_js_external',
-				'label' => 'JS Externo',
-				'section' => 'code_global',
+				'uid' => 'kfag_wp_custom_js_external',
+				'label' => esc_html__( 'JS Externo', 'wp-custom-code'),
+				'section' => 'kfag_code_global',
 				'type' => 'textarea',
 				'options' => false,
 				'placeholder' => '',
-				'helper' => __( 'Does this help?', 'wp-custom-code'),
-				'supplemental' => __( 'Enter one address per line.', 'wp-custom-code'),
+				'helper' => esc_html__( 'Does this help?', 'wp-custom-code'),
+				'supplemental' => esc_html__( 'Enter one address per line.', 'wp-custom-code'),
 				'default' => ''
 			),
 		    
@@ -103,15 +103,15 @@ class Settings_CSS_JS_Custom {
 
 		);
 	    foreach( $fields as $field ){
-	        add_settings_field( $field['uid'], $field['label'], array( $this, 'field_callback' ), 'custom_code_fields', $field['section'], $field );
-	        register_setting( 'custom_code_fields', $field['uid'] );
+	        add_settings_field( $field['uid'], $field['label'], array( $this, 'field_callback' ), 'kfag_custom_code_fields', $field['section'], $field );
+	        register_setting( 'kfag_custom_code_fields', $field['uid'] );
 	    }
 	}
 
 	
 	public function field_callback( $arguments ) {
 
-	    $value = get_option( $arguments['uid'] ); // Get the current value, if there is one
+	    $value = esc_attr( get_option( $arguments['uid'] ) ); // Get the current value, if there is one
 	    if( ! $value ) { // If no value exists
 	        $value = $arguments['default']; // Set to our default
 	    }
