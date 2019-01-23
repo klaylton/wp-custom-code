@@ -2,7 +2,7 @@
 (function ($) {
     $(function () {
 
-        if ($('#wp_custom_css').length) {
+        if ($('#kfag_wp_custom_css').length) {
             var editorSettings = wp.codeEditor.defaultSettings ? _.clone(wp.codeEditor.defaultSettings) : {};
             editorSettings.codemirror = _.extend({},
                 editorSettings.codemirror, {
@@ -11,10 +11,10 @@
                     mode: 'css',
                 }
             );
-            var editor = wp.codeEditor.initialize($('#wp_custom_css'), editorSettings);
+            var editor = wp.codeEditor.initialize($('#kfag_wp_custom_css'), editorSettings);
         }
 
-        if ($('#wp_custom_js').length) {
+        if ($('#kfag_wp_custom_js').length) {
             var editorSettings = wp.codeEditor.defaultSettings ? _.clone(wp.codeEditor.defaultSettings) : {};
             editorSettings.codemirror = _.extend({},
                 editorSettings.codemirror, {
@@ -24,10 +24,10 @@
                     theme: "blackboard"
                 }
             );
-            var editor = wp.codeEditor.initialize($('#wp_custom_js'), editorSettings);
+            var editor = wp.codeEditor.initialize($('#kfag_wp_custom_js'), editorSettings);
         }
 
-        if ($('#wp_custom_js_external').length) {
+        if ($('#kfag_wp_custom_js_external').length) {
             var editorSettings = wp.codeEditor.defaultSettings ? _.clone(wp.codeEditor.defaultSettings) : {};
             editorSettings.codemirror = _.extend({},
                 editorSettings.codemirror, {
@@ -37,7 +37,7 @@
                     theme: "blackboard"
                 }
             );
-            var editor = wp.codeEditor.initialize($('#wp_custom_js_external'), editorSettings);
+            var editor = wp.codeEditor.initialize($('#kfag_wp_custom_js_external'), editorSettings);
         }
         
     });
