@@ -1,5 +1,5 @@
 <?php
-class Meta_Box_CSS_JS_Custom {
+class KFAG_Meta_Box_CSS_JS_Custom {
 
     private $screen = array( 'post','page' );
     
@@ -8,7 +8,7 @@ class Meta_Box_CSS_JS_Custom {
 		foreach ( $this->screen as $single_screen ) {
 			add_meta_box(
 				'custom_code_admin_metabox',
-				esc_html__( 'WP Custom Code', 'wp-custom-code' ),
+				esc_html_e( 'WP Custom Code', 'wp-custom-code' ),
 				array( $this, 'meta_box_callback' ),
 				$single_screen,
 				'normal',
@@ -20,8 +20,8 @@ class Meta_Box_CSS_JS_Custom {
     
 	public function meta_box_callback( $post ) {
 	
-		wp_nonce_field( 'custom_code_admin_metabox_data', 'custom_code_admin_metabox_nonce' );
-		esc_html_e( 'Enter your code in the field corresponding to the language.', 'wp-custom-code' );
+		wp_nonce_field( 'kfag_custom_code_admin_metabox_data', 'kfag_custom_code_admin_metabox_nonce' );
+		esc_html__( 'Enter your code in the field corresponding to the language.', 'wp-custom-code' );
 		$this->field_generator( $post );
 	
     }
@@ -34,7 +34,7 @@ class Meta_Box_CSS_JS_Custom {
                 // CSS
 				array(
 					'label' => esc_html__( 'CSS Custom', 'wp-custom-code' ),
-					'id' => 'wp_custom_css',
+					'id' => 'kfag_wp_custom_css',
 					'placeholder' => esc_html__( 'Enter your code in the field corresponding to the language.', 'wp-custom-code' ),
 					'type' => 'textarea',
                 ),
@@ -42,7 +42,7 @@ class Meta_Box_CSS_JS_Custom {
                 // JavaScript
                 array(
 					'label' => esc_html__( 'JavaScript Custom', 'wp-custom-code' ),
-					'id' => 'wp_custom_js',
+					'id' => 'kfag_wp_custom_js',
 					'placeholder' => esc_html__( '', 'wp-custom-code' ),
 					'type' => 'textarea',
                 ),
@@ -50,7 +50,7 @@ class Meta_Box_CSS_JS_Custom {
 				// javascript externo
                 array(
 					'label' => esc_html__( 'CSS and JavaScript URL Custom', 'wp-custom-code' ),
-					'id' => 'wp_custom_js_external',
+					'id' => 'kfag_wp_custom_js_external',
 					'placeholder' => esc_html__( 'https://www.site.com/js/script.js', 'wp-custom-code' ),
 					'type' => 'textarea',
                 ),
@@ -116,13 +116,13 @@ class Meta_Box_CSS_JS_Custom {
 
     public function save_fields( $post_id ) {
 
-		if ( ! isset( $_POST['custom_code_admin_metabox_nonce'] ) ) {
+		if ( ! isset( $_POST['kfag_custom_code_admin_metabox_nonce'] ) ) {
 			return $post_id;
 		}
 
-		$nonce = $_POST['custom_code_admin_metabox_nonce'];
+		$nonce = $_POST['kfag_custom_code_admin_metabox_nonce'];
 
-		if ( !wp_verify_nonce( $nonce, 'custom_code_admin_metabox_data' ) ) {
+		if ( !wp_verify_nonce( $nonce, 'kfag_custom_code_admin_metabox_data' ) ) {
 			return $post_id;
 		}
 
@@ -133,14 +133,11 @@ class Meta_Box_CSS_JS_Custom {
 		foreach ( $this->meta_fields() as $meta_field ) {
 			if ( isset( $_POST[ $meta_field['id'] ] ) ) {
 				switch ( $meta_field['type'] ) {
-                    case 'text':
-                        $_POST[ $meta_field['id'] ] = sanitize_text_field( $_POST[ $meta_field['id'] ] );
-                        break;
                     case 'textarea':
                         $_POST[ $meta_field['id'] ] = sanitize_textarea_field( $_POST[ $meta_field['id'] ] );
                         break;
                     default:
-                        $_POST[ $meta_field['id'] ] = trim( $_POST[ $meta_field['id'] ] );
+                        $_POST[ $meta_field['id'] ] = sanitize_text_field( $_POST[ $meta_field['id'] ] );
                 }
 
 				update_post_meta( $post_id, $meta_field['id'], $_POST[ $meta_field['id'] ] );
