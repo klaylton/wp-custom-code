@@ -1,7 +1,7 @@
 <?php
 /**
  * @wordpress-plugin
- * Plugin Name:       WP Custom Code
+ * Plugin Name:       WP Custom Code Beta
  * Plugin URI:        https://github.com/bboyguil/wp-custom-code
  * Description:       Add custom CSS and JavaScript to your pages and post in simple and handy ways.
  * Version:           1.0.0
@@ -78,6 +78,16 @@ class KFAG_WP_Custom_Code {
         wp_enqueue_style('wp-codemirror');
     }
 
+    // Tradução
+    public function load_plugin_textdomain() {
+
+		load_plugin_textdomain(
+			'wp-custom-code',
+			false,
+			dirname( plugin_basename( __FILE__ ) ) . '/languages/'
+        );
+
+    }
 
     public function code_custom_insert_script($script = null) {
         if ($script === null) return;
@@ -100,7 +110,7 @@ class KFAG_WP_Custom_Code {
         $exts = array('js_external', 'js');
 
         foreach ($exts as $ext) {
-            $value = esc_attr( get_option('kfag_wp_custom_'.$ext, '') );
+            $value = get_option('kfag_wp_custom_'.$ext, '');
             if ( $value ) {
                 $this->code_custom_insert_script($value);
             }
@@ -108,7 +118,7 @@ class KFAG_WP_Custom_Code {
 
         if (isset($post)) {
             foreach ($exts as $ext) {
-                $value = esc_attr( get_post_meta( $post->ID, 'kfag_wp_custom_'.$ext, true ) );
+                $value = get_post_meta( $post->ID, 'kfag_wp_custom_'.$ext, true );
                 if ( $value ) {
                     $this->code_custom_insert_script($value);
                 }
@@ -119,28 +129,20 @@ class KFAG_WP_Custom_Code {
     // imprimi o CSS no Front-End
     public function register_custom_css() {
         global $post;
-        $value = esc_attr( get_option('kfag_wp_custom_css', '' ) );
+        $value = esc_html( get_option('kfag_wp_custom_css', '' ) );
         if ( $value ) {
             echo "<style>" . $value . "</style>";
         }
 
         if (isset($post)) {
-            $value = esc_attr( get_post_meta( $post->ID, 'kfag_wp_custom_css', true ) );
+            $value = esc_html( get_post_meta( $post->ID, 'kfag_wp_custom_css', true ) );
             if ( $value ) {
                 echo "<style>" . $value . "</style>";
             }
         }
     }
 
-    public function load_plugin_textdomain() {
 
-		load_plugin_textdomain(
-			'wp-custom-code',
-			false,
-			dirname( plugin_basename( __FILE__ ) ) . '/languages/'
-        );
-
-	}
 
 }
 

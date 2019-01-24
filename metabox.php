@@ -7,8 +7,8 @@ class KFAG_Meta_Box_CSS_JS_Custom {
 	
 		foreach ( $this->screen as $single_screen ) {
 			add_meta_box(
-				'custom_code_admin_metabox',
-				esc_html_e( 'WP Custom Code', 'wp-custom-code' ),
+				'kfag_custom_code_admin_metabox',
+				esc_html__( 'WP Custom Code', 'wp-custom-code' ),
 				array( $this, 'meta_box_callback' ),
 				$single_screen,
 				'normal',
