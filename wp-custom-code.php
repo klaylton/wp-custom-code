@@ -1,10 +1,10 @@
 <?php
 /**
  * @wordpress-plugin
- * Plugin Name:       WP Custom Code Beta
+ * Plugin Name:       WP Custom Code
  * Plugin URI:        https://github.com/bboyguil/wp-custom-code
  * Description:       Add custom CSS and JavaScript to your pages and post in simple and handy ways.
- * Version:           1.0.0
+ * Version:           1.1.0
  * Author:            Klaylton Fernando
  * Author URI:        https://profiles.wordpress.org/bboyguil/
  * License:           GPL-2.0+
@@ -45,7 +45,6 @@ class KFAG_WP_Custom_Code {
         // Codemirror
         add_action('admin_enqueue_scripts', array( $this, 'codemirror_enqueue_scripts' ) );
 
-        // tradução
         add_action( 'plugins_loaded', array( $this, 'load_plugin_textdomain' ) );
         
     }
@@ -78,7 +77,6 @@ class KFAG_WP_Custom_Code {
         wp_enqueue_style('wp-codemirror');
     }
 
-    // Tradução
     public function load_plugin_textdomain() {
 
 		load_plugin_textdomain(

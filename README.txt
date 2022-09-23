@@ -3,49 +3,50 @@ Contributors: bboyguil
 Donate link: https://www.criarsitewordpress.com
 Tags: code, css, javascript,
 Requires at least: 3.0.1
-Tested up to: 3.4
-Stable tag: 1.0
+Tested up to: 6.0.2
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Adicione CSS e Javascript em suas páginas de forma simples e rápida. O WP Custom Code suporta o CodeMirror.
+Add CSS and Javascript to your pages simply and quickly. WP Custom Code supports CodeMirror.
 
 == Description ==
 
-Este plugin adiciona 3 campos em cada página e post de seu blog onde é possível digitar seus código em uma interface legível.
+This plugin adds 3 fields on every page and blog post where you can type your code in a readable interface.
 
-Além de muito leve e funcional, o plugin WP Custom Code ainda permite que você trabalhe com bibliotecas externas. Basca colar o endereço 
-da biblioteca javascript de sua preferência no campo destinado e você já poderá desfrutar desse recurso indispensável.
-
+In addition to being very light and functional, the WP Custom Code plugin also allows you to work with external libraries. Basque paste the address
+of the javascript library of your choice in the designated field and you will be able to enjoy this indispensable resource.
 
 == Installation ==
 
-= De dentro do painel (recomendado) =
+= From inside the dashboard (recommended) =
 
-1. Navegar para `Painel` ▸ `Plugins` ▸ `Adicionar novo`;
-2. Pesquise por`WP Custom Code`;
-3. Clique em `Instalar`, depois em `Ativar`.
+1. Navigate to `Dashboard` ▸ `Plugins` ▸ `Add New`;
+2. Search for `WP Custom Code`;
+3. Click `Install`, then `Activate`.
 
 
-= Instalação Manual =
+= Manual Installation =
 
-1. Baixe o plugin como um arquivo .zip;
-2. Descompacte o arquivo baixado e faça o upload da pasta`wp-custom-code` para o diretório `/wp-content/plugins/`
-1. Navegue para `Painel` ▸ `Plugins` e ative o plugin.
-
+1. Download the plugin as a .zip file;
+2. Unzip the downloaded file and upload the `wp-custom-code` folder to the `/wp-content/plugins/` directory
+1. Navigate to `Dashboard` ▸ `Plugins` and activate the plugin.
 
 == Frequently Asked Questions ==
 
-= Posso executar códigos PHP? =
+= Can I run PHP code? =
 
-Infelizmente, no momento o plugin não possui suporte para scripts PHP.
+Unfortunately, at the moment the plugin does not support PHP scripts.
 
 == Screenshots ==
 
-1. Os campos serão impressos em posts e páginas.
+1. The fields will be printed on posts and pages.
 
 == Changelog ==
 
-= 1.0 =
-* Versão inicial de lançamento.
+= 1.1.0 =
+* Compatible with WordPress 6.0.2.
+
+= 1.0.0 =
+* Initial release version.
 
